@@ -6,6 +6,8 @@
   "author": "nvb <nvb@aproxima.ru>",
   "license": "MIT",
   "dependencies": {
-    "jquery": "*"
+    "jquery": "*",
+    "jquery-caret": "*",
+    "bootstrap-datepicker": "*"
   }
 }
