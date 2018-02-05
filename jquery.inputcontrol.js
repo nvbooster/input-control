@@ -1,5 +1,11 @@
-(function( $ ) {
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? (require('jquery-caret'),require('bootstrap-datepicker'),factory(require('jquery'))) :
+  typeof define === 'function' && define.amd ? define(['jquery', 'bootstrap-datepicker', 'jquery-caret'], factory) :
+  (factory((global.bootstrap = {}),global.jQuery));
+}(this, (function ($) {
 
+  $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
+  
   var filterContainer = {};
 
   filterContainer.upperFilter = function(object) {
@@ -37,7 +43,7 @@
   filterContainer.dateFilter = function (object) {    
     var trigger = $(object).data('trigger');
     $(object).datepicker({
-      language: 'ru',
+      language: $(this).attr('data-locale') || 'en',
       todayBtn: 'linked',
       autoclose: true,
       format: 'd.mm.yyyy',
@@ -75,4 +81,4 @@
     }
   };
 
-}(jQuery));
+})));
