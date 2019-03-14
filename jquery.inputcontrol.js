@@ -48,8 +48,9 @@
       autoclose: true,
       format: 'd.mm.yyyy',
       showOnFocus: trigger ? false : true,
-          todayBtn: true,
-          todayHighlight: true
+      todayBtn: true,
+      todayHighlight: true,
+      zIndexOffset: 2000,
     });
     if (trigger) {
       $('#' + trigger).click(function(e) {
