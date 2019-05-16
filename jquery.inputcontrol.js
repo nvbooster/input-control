@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? (require('jquery-caret'),require('bootstrap-datepicker'),factory(require('jquery'))) :
   typeof define === 'function' && define.amd ? define(['jquery', 'bootstrap-datepicker', 'jquery-caret'], factory) :
-  (factory((global.bootstrap = {}),global.jQuery));
+  (factory(global.jQuery));
 }(this, (function ($) {
 
   $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
