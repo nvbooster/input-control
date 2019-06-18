@@ -34,7 +34,7 @@
     filterContainer.regexFilter(object, '[^0-9]');
   };
 
-  filterContainer.dateFilter = function (object) {    
+  filterContainer.dateFilter = function (object) {
     var trigger = $(object).data('trigger');
     $(object).datepicker({
       language: 'ru',
