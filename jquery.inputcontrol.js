@@ -3,6 +3,10 @@
   typeof define === 'function' && define.amd ? define(['jquery', 'bootstrap-datepicker', 'jquery-caret'], factory) :
   (factory(global.jQuery));
 }(this, (function ($) {
+  
+  var config = this.inputcontrol = $.extend({
+    locale: 'en'
+  }, this.inputcontrol || {});
 
   $ = $ && $.hasOwnProperty('default') ? $['default'] : $;
   
@@ -15,7 +19,7 @@
   };
 
   filterContainer.regexFilter = function(object, regex) {
-    var regex = regex || $(object).attr('data-regex') || '\W';
+    var regex = regex || $(object).data('regex') || '\W';
     $(object).bind({
       keydown: function() {
         $(this).data('pos', $(this).caret());
@@ -33,7 +37,7 @@
   };
 
   filterContainer.latinFilter = function(object) {
-    filterContainer.regexFilter(object, '[^-a-zA-Z0-9]');
+    filterContainer.regexFilter(object, '[^ -a-zA-Z0-9]');
   };
 
   filterContainer.numericFilter = function(object) {
@@ -43,7 +47,7 @@
   filterContainer.dateFilter = function (object) {    
     var trigger = $(object).data('trigger');
     $(object).datepicker({
-      language: $(object).attr('data-locale') || 'en',
+      language: $(object).data('locale') || config.locale,
       todayBtn: 'linked',
       autoclose: true,
       format: 'd.mm.yyyy',
@@ -70,7 +74,7 @@
       return $(this);
     } else {
       return this.each(function() {
-        var filters = $(this).attr('data-format').split(' '), i, filterFunction;
+        var filters = $(this).data('format').split(' '), i, filterFunction;
         for (i=0; i<filters.length; i++) {
           filterFunction = filters[i]+'Filter';
           if (typeof filterContainer[filterFunction] === 'function') {
